@@ -1,0 +1,15 @@
+@use 'sass:math';
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function get-clamp-size($divider, $max, $min, $typeSize: vw) {
+  $size: calc(strip-unit($max) / strip-unit($divider) * 100);
+
+  @return clamp(#{$min}, #{$size}#{$typeSize}, #{$max});
+}

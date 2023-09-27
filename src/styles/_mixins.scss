@@ -1,0 +1,115 @@
+@import 'funtctions';
+@import 'variables';
+
+@mixin animation(
+  $animation-name,
+  $animation-duration,
+  $animation-timing-function,
+  $animation-delay,
+  $animation-direction: normal,
+  $animation-iteration-count: 1
+) {
+  animation: $animation-name $animation-duration $animation-timing-function $animation-delay
+    $animation-direction $animation-iteration-count;
+}
+
+@mixin adaptive-font($mediaWidth, $maxFontSize, $minFontSize, $lineHeight: 120%, $fontWeight: 400) {
+  font-size: get-clamp-size($mediaWidth, $maxFontSize, $minFontSize);
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+}
+
+@mixin transition(
+  $transition-name: all,
+  $transition-duration: 0.2s,
+  $transition-type: ease,
+  $transition-delay: 0s
+) {
+  transition: $transition-name $transition-duration $transition-type $transition-delay;
+}
+
+@mixin gradient-text-color($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin ellipsis-text($max-width: 99.99%) {
+  max-width: $max-width;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: clip;
+}
+
+@mixin ellipsis-multi-text($clamp-line: 3, $max-width: 99.99%) {
+  display: -webkit-box;
+  max-width: $max-width;
+  -webkit-line-clamp: $clamp-line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin font-display {
+  @include adaptive-font($query-border, $font-size-display, $font-size-display-mobile, 100%, 400);
+}
+
+@mixin font-heading-1 {
+  @include adaptive-font(
+    $query-border,
+    $font-size-heading-1,
+    $font-size-heading-1-mobile,
+    200%,
+    500
+  );
+}
+
+@mixin font-heading-2 {
+  @include adaptive-font(
+    $query-border,
+    $font-size-heading-2,
+    $font-size-heading-2-mobile,
+    150%,
+    500
+  );
+}
+
+@mixin font-body-base-regular {
+  @include adaptive-font(
+    $query-border,
+    $font-size-body-base,
+    $font-size-body-base-mobile,
+    171.429%,
+    300
+  );
+}
+
+@mixin font-body-base-body {
+  @include adaptive-font(
+    $query-border,
+    $font-size-body-base,
+    $font-size-body-base-mobile,
+    171.429%,
+    500
+  );
+}
+
+@mixin font-body-small-regular {
+  @include adaptive-font(
+    $query-border,
+    $font-size-body-small,
+    $font-size-body-small-mobile,
+    133.333%,
+    300
+  );
+}
+
+@mixin font-body-small-bold {
+  @include adaptive-font(
+    $query-border,
+    $font-size-body-small,
+    $font-size-body-small-mobile,
+    133.333%,
+    500
+  );
+}

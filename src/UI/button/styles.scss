@@ -1,0 +1,14 @@
+@import 'src/styles/variables';
+
+.button-ui {
+  margin: 20px;
+
+  width: 124px;
+  padding: 4px 2px;
+
+  background-color: $color-orange-primary;
+
+  &-label {
+    color: #000000;
+  }
+}

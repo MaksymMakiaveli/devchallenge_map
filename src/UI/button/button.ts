@@ -1,30 +1,21 @@
-import { WebComponent } from '../../utils';
+import './styles.scss';
+import { element, handle, WebComponent } from '../../shared';
 
+@element({
+  tagName: 'button-ui',
+  shadow: true,
+  template: `
+    <button class="button-ui">
+        <span>
+            <slot></slot>
+        </span>
+    </button>
+    `,
+  styleUrl: './styles.scss',
+})
 export class Button extends WebComponent {
-  static get observedAttributes() {
-    return ['variant', 'label'];
+  @handle('click', '.btn')
+  onClick() {
+    console.log('Click');
   }
-
-  connectedCallback() {
-    this.render();
-  }
-
-  attributeChangedCallback() {
-    this.render();
-  }
-
-  render = () => {
-    console.log(this.innerText);
-
-    const variant = this.getAttribute('variant') || 'primary';
-
-    const baseClassName = 'ui-button';
-    const className = `${this.className} ${baseClassName} ${baseClassName}--${variant}`;
-
-    this.innerHTML = `
-      <button class='${className}'>
-          <span class='${baseClassName}-label'>${this.innerText}</span>
-      </button>
-      `;
-  };
 }

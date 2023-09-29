@@ -1,4 +1,9 @@
 import './styles/main.scss';
-import { initUI } from './UI';
+import './app';
+import './UI';
 
-initUI();
+document.addEventListener('DOMContentLoaded', () => {
+  const app = document.createElement('app-component');
+
+  document.querySelector('#app')?.appendChild(app);
+});

@@ -2,6 +2,11 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  // --------------- Ports configuration
+  server: {
+    port: 5432,
+    open: true,
+  },
   // --------------- Css configuration
   css: {
     devSourcemap: true,
